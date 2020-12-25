@@ -1,0 +1,6 @@
+import json 
+v='{"name":"vishal","std":"mca","address":"Mandi bazar near chhaya studio "}'
+# s=json.loads(v)
+# print(s['address'])
+with open('top.txt','w')as f:
+	json.dump(v,f)
