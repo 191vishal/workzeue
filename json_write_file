@@ -1,0 +1,4 @@
+import json
+p={'name':'vishal','age':12}
+P_j=json.dumps(p)
+print(P_j)
