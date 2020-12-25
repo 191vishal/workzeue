@@ -1,62 +1,70 @@
-from werkzeug.utils import escape
-from werkzeug.wrappers import Request, Response
+from from werkzeug.utils import escape
+from werkzeug.wrappers import Request,Response
 
 @Request.application
 def Ecart(request):
-   result = ['<title>E-Cart</title>']
-   #if request.method == 'POST':
-       #result.append('<h1>Hello %s!</h1>' % escape(request.form['name']))
-   result.append('''
+	r=['<title>Vi Mart</title>']
+	#if request.method == 'POST'
+		#r.append('<h1>hello %s !</h1>' % escape(request.from['name']))
+	r.append('''
+		<script language='JavaScript'>
+			function btn(){
+							var q=document.getElementById('input').value;
+							if q==0:
+								
+							document.getElementById('display').innerHTML =q+ "Tv" +"="+ +q*20000 +"<input type='button'id='rm1' value='Remove' onclick='rmv()'>";
+			}
+			function btn1(){
+							var w=document.getElementById('input1').value;
+							document.getElementById('display1').innerHTML =w+" Smart Phone "+"="+ +w*12000 +"<input type ='button' id='rm2 value='Remove' onclick='rmv()'>"
 
-       <script language="JavaScript">
-           function btn(){
-                           var w=document.getElementById('input').value;
-                           document.getElementById('display').innerHTML = w+ " Watch " +"="+ + w*2000 + "<input type='button' id='rm1' value='Remove' onclick='rmv()'>";
-               }
-           function btn1(){
-                           var t=document.getElementById('input1').value;
-                           document.getElementById('display1').innerHTML=t+ " T-Shirt " +"="+ + t*1500 + "<input type='button' id='rm2' value='Remove' onclick='rmv1()'>";
-           }
-           function btn2(){
-                           var s=document.getElementById('input2').value;
-                           document.getElementById('display2').innerHTML=s+ " Shoes " +"="+ + s*4000 + "<input type='button' id='rm3' value='Remove' onclick='rmv2()'>";
-           }
-           function rmv(){
-                           var w=document.getElementById('input').value="";
-                           document.getElementById('display').innerHTML="";
-           }
-           function rmv1(){
-                           var w=document.getElementById('input1').value="";
-                           document.getElementById('display1').innerHTML="";
-           }
-           function rmv2(){
-                           var w=document.getElementById('input2').value="";
-                           document.getElementById('display2').innerHTML="";
-           }
-       </script>
-       <form action="" method="post">
-           <marquee style="color:gray; font-size:50px;">ONILNE SHOPPING CHANNEL</marquee>
-           <table align="center">
-               <th>
-               <h1>Watch</h1>
-               <h2>RS 2000</h2>
-               <input type="text" id="input" placeholder="Quantity"></br></br>
-               <input type="Button" value="Add To Cart" onclick="btn()">
-               </th>
-               <th>
-               <h1>T-Shirt</h1>
-               <h2>RS 1500</h2>
-               <input type="text" id="input1" placeholder="Quantity"></br></br>
-               <input type="Button" value="Add To Cart" onclick="btn1()">
-               </th>
-               <th>
-               <h1>Shoes</h1>
-               <h2>RS 4000</h2>
-               <input type="text" id="input2" placeholder="Quantity"></br></br>
-               <input type="Button" value="Add To Cart" onclick="btn2()">
-               </th>
-           </table>
-       </form>
-       <label>----CART----</label>
-       <p><span id='display'></span></p>
-       <p><span id='display1'></span></p>
+			}
+			function btn2(){
+							var e=document.getElementById('input2').value;
+							document.getElementById('display2').innerHTML =e+" AC "+"="+ +e*15000 +"<input type ='button' id='rm3 value='Remove' onclick= 'rmv()'>"
+			}
+			function rmv(){
+							var s=document.getElementById('input').value='';
+							document.getElementById('display').inneHTML="";
+			}
+			function rmv1(){
+							var s=document.getElementById('input1').value='';
+							document.getElementById('display1').inneHTML="";
+			}
+			function rmv2(){
+							var s=document.getElementById('input2').value='';
+							document.getElementById('display2').inneHTML="";
+			}
+		</script>
+			<from action="" method="post">
+			<table align="center">
+				<th>
+				<h1>Tv</h1>
+				<h4>Rs. 20000</h4>
+				<input type="text" id="input" placeholder="Quantity"></br></br>
+				<input type="Button" value="Add To Cart"onclick="btn()">
+				</th>
+				<th>
+				<h1>Smart Mobile</h1>
+				<h4>Rs. 12000</h4>
+				<input type="text" id="input1" placeholder="Quantity"></br></br>
+				<input type="Button" value="Add To Cart" onclick="btn1()">
+				</th>
+				<th>
+				<h1>AC</h1>
+				<h4>Rs. 15000</h4>
+				<input type ="text" id ="input2"placeholder="Quantity"></br></br>
+				<input type="Button"value="Add To Cart"onclick="btn2()">
+				</th>
+			</table>
+			</from>
+			<label> _ _ _ Add To Cart _ _ _</label>
+			<p><span id="display"></span></p>
+			<p><span id="display1"></span></p> 
+			<p><span id="display2"></span></p>  
+
+	''')	
+	return Response(''.join(r), mimetype='text/html')
+if __name__ == '__main__':
+    from werkzeug.serving import run_simple
+    run_simple('localhost', 4000, Ecart)
