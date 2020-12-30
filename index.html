@@ -1,0 +1,81 @@
+<html>
+<head>
+   <title>JSON Test</title>
+</head>
+<body>
+   
+   
+
+       <center><h1>V-mart.com</h1></center>
+       </head>
+       <body bgcolor="918151">
+       <div id="hel">
+       <center>
+       <table>
+       <tr>
+           <td>
+                <div id="myData"></div>
+           </td>
+       </tr>
+     
+           <td><span id="proDisp"></span>  </td>
+       </tr>
+
+
+
+
+
+
+
+
+       </center>
+
+       <table>
+       <br><br>
+       </div>
+
+
+       <script>
+       data = %(data)s
+       var mainContainer = document.getElementById("myData");
+       
+       for (var i = 0; i < data.length; i++)
+       {
+           
+           var div = document.createElement("div");
+               div.innerHTML = "<h1><b>"+ data[i].Product + '</b></h1><h2><b>' + data[i].Price+"</b></h2>";
+               mainContainer.appendChild(div);
+               var div1 = document.createElement("div");
+               div1.innerHTML = '<tr><td><input type="text" id="Sub" name="Sub"> <input type="button" id="pro" value="Add to cart" style="margin-right: 80px"></td>';
+               
+               mainContainer.appendChild(div1);
+
+       }
+       for (var i = 0; i < data.length; i++)
+       {    
+           var prices = data[i].price;
+           alert(prices)
+           document.getElementById("pro").onclick = function(prices) {  
+                       alert(prices);
+                        pro()  
+                    };  
+                    // k.forEach(pro);  
+                   function pro(){
+                       
+                         
+                       
+                           var quantity = document.getElementById('Sub').value;
+                           document.getElementById('proDisp').innerHTML= "<input type='button' id='remove' value='Remove' onclick='remove()'><br><br>";
+                   }
+                       
+                   function remove()
+                   {
+                         var quantity = document.getElementById('Sub').value;
+                           document.getElementById('proDisp').innerHTML="";
+                         document.getElementById('Sub').value="";
+                   }
+       }
+           
+   </script>
+</body>
+</html>

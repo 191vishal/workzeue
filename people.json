@@ -1,0 +1,10 @@
+[
+    {
+        "Product":"Mobile",
+        "Price": "12000"
+    },
+     {
+        "Product":"Tv",
+        "Price": "20000"
+    }
+]
