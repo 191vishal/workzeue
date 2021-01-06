@@ -1,0 +1,124 @@
+<html>
+<head>
+   <title>JSON Test</title>
+   <style type="text/css">
+    #cards{
+      width: 150px;
+      height:100px;
+      margin: 10px;
+      border-style: dotted dashed solid double;
+    }
+        #cart{
+      width: 150px;
+      height:150px;
+      margin: 10px;
+      border-style: dotted dashed solid double;
+    }
+   </style>
+</head>
+<body>
+   
+   
+
+       <center><h1>V-mart.com</h1></center>
+       </head>
+       <body bgcolor="918151">
+       <div id="main">
+       <center>
+       
+         <div id="myData"></div>
+               </center>
+
+      
+       <br><br>
+       </div>
+       <div id="cart"></div>
+
+
+       <script>
+          function createCard(data) {
+            let card = document.createElement('div');
+            card.id = "cards"
+            card.className = "cards";
+
+            let title = document.createElement('div');
+            title.innerText = data.Product;
+
+            let price = document.createElement('div');
+            price.innerText = "Price: " + data.Price;
+
+            let a = document.createElement('a');
+            a.href = "/add/to/cart/" + data.id;
+            a.innerText = "Add to Cart";
+            a.classname = "input";
+
+            card.appendChild(title);
+            card.appendChild(price);
+            card.appendChild(a);
+            return card
+        }
+
+
+        data = %(data)s
+        cartData = %(cartData)s
+
+        var mainContainer = document.getElementById("main");
+        var dataContainer = document.getElementById("myData");
+        var cartContainer = document.getElementById("cart");
+        for (var i = 0; i < data.length; i++) {
+            let card = this.createCard(data[i])
+            dataContainer.appendChild(card);
+            if (cartData && parseInt(data[i].id) in cartData) {
+                let div = document.createElement('div');
+                div.innerText = data[i].Product + " " + data[i].Price
+                let a = document.createElement('a');
+                a.href = "/remove/" + data[i].id;
+                a.innerText = "Remove";
+                cartContainer.appendChild(div);
+                cartContainer.appendChild(a);
+            }
+        }
+
+
+       // var mainContainer = document.getElementById("myData");
+       
+       // for (var i = 0; i < data.length; i++)
+       // {
+           
+       //     var div = document.createElement("div");
+       //         div.innerHTML = "<h1><b>"+ data[i].Product + '</b></h1><h2><b>' + data[i].Price+"</b></h2>";
+       //         mainContainer.appendChild(div);
+       //         var div1 = document.createElement("div");
+       //         div1.innerHTML = '<tr><td><input type="text" id="Sub" name="Sub"> <input type="button" id="pro" value="Add to cart" style="margin-right: 80px"></td>';
+               
+       //         mainContainer.appendChild(div1);
+
+       // }
+       // for (var i = 0; i < data.length; i++)
+       // {    
+       //     var prices = data[i].price;
+       //     alert(prices)
+       //     document.getElementById("pro").onclick = function(prices) {  
+       //                 alert(prices);
+       //                  pro()  
+       //              };  
+                      
+       //             function pro(){
+                       
+                         
+                       
+       //                     var quantity = document.getElementById('Sub').value;
+       //                     document.getElementById('proDisp').innerHTML= "<input type='button' id='remove' value='Remove' onclick='remove()'><br><br>"; 
+       //             }
+                       
+       //             function remove()
+       //             {
+       //                   var quantity = document.getElementById('Sub').value;
+       //                     document.getElementById('proDisp').innerHTML="";
+       //                   document.getElementById('Sub').value="";
+       //             }
+       // }
+           
+   </script>
+</body>
+</html>
