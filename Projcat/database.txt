@@ -1,0 +1,47 @@
+//Craet Table in syntex\\
+
+CREATE TABLE teacher(
+t_id integer,
+s_id integer,
+s_name varchar(255),
+PRIMARY KEY(t_id),
+FOREIGN KEY(s_id) REFERENCES st(s_id)
+
+//Craet Table in users\\
+
+'''create_table_query='''CREATE TABLE USERS ( uid integer, rolevarchar(30) NOT NULL, email varchar(50) NOT NULL, password varchar(20) NOT NULL,
+ PRIMARY KEY(uid));'''
+ 
+ //Craet Table in crop_detail \\
+ 
+ '''CREATE TABLE crop_detail ( c_id integer, f_id integer,
+ crop_name varchar(25) NOT NULL, detail varchar(50) ,
+ place varchar(10), q_kg integer, category varchar(10),
+ state varchar(50), PRIMARY KEY(c_id),
+ FOREIGN KEY(f_id) REFERENCES farmer(f_id));'''
+
+//Craet Table in crop_stage_detail\\
+
+'''CREATE TABLE crop_stage_detail ( st_id integer, c_id integer,
+ start_date date NOT NULL, end_date date , price numeric(10),
+ sequence integer, state varchar(50), PRIMARY KEY(st_id),
+ FOREIGN KEY(c_id) REFERENCES crop_detail(c_id));'''
+
+//Craet Table in crop_stage_w_detail\\
+
+'''CREATE TABLE crop_stage_w_detail ( st_w_id integer, st_id integer,
+ planned_start_date date NOT NULL, planned_end_date date NOT NULL,
+ actual_start_date date NOT NULL, actual_end_date date NOT NULL,
+ state varchar(50), description varchar, finish_note varchar(50),
+ PRIMARY KEY(st_w_id),
+ FOREIGN KEY(st_id) REFERENCES crop_stage_detail(st_id));'''
+
+//Craet Table in book\\
+
+'''CREATE TABLE book ( b_id integer, u_id integer, c_id integer, st_id integer, qty  numeric, date date, state varchar(50), PRIMARY KEY(b_id),
+ FOREIGN KEY(u_id) REFERENCES users(u_id),
+ FOREIGN KEY(st_id) REFERENCES crop_detail(c_id),
+ FOREIGN KEY(st_id) REFERENCES crop_stage_detail(st_id));'''
+ 
+ 
+ 
