@@ -10,6 +10,13 @@ const {qweb} = owl;
 
 export class logIn extends Component {
 
+	constructor() {
+        super(...arguments);
+        this.state = useState({
+            invalid: undefined
+        });
+    }
+
 async _onLoginForm (ev) 
 {
 	debugger;
@@ -19,18 +26,29 @@ async _onLoginForm (ev)
 	xhr.send(JSON.stringify(Object.fromEntries(formData.entries())));
 	xhr.onload = async () => {
 		const response = JSON.parse(xhr.response);
-	    if (response.credentials === false) {
-	        this.state.invalid = true;
-	    } else if (response.session_id)
-	    {
-	        localStorage.setItem('session_id', response.session_id);
-	        this.env.bus.trigger('login_changed', {valid: true});
-			this.env.router.navigate({to:'crop'})
-	    };
-	}
-}
+		console.log(response)
+	    if (response.email === false)
+            {
+                this.state.invalid = " ";
+            }
+            else if(response.pass === false) 
+            {
+                this.state.invalid = " ";
+            }
+            else(response.session_id) 
+            {
+                document.cookie = `session_id=${response.session_id}`;
+                odoo.session_info = {
+                    user_id: response.user_id,
+                    is_valid: response.is_valid
+                }
+                this.env.bus.trigger('login_changed');
+                this.env.router.navigate({to:'crop'});
+            }
 
-  static template = xml`
+        };
+	}
+static template = xml`
   <div style="height:43em;">
   		<br/>
   		<div class="d-flex justify-content-center" style="height:40em;"	>

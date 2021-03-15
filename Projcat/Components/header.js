@@ -1,4 +1,4 @@
-const { Component,Store, mount } = owl;
+const { Component,Store, mount, useState} = owl;
 const { xml } = owl.tags;
 
 export class Header extends Component {
@@ -64,13 +64,18 @@ static template = xml `
           <li class="nav-item" role="presentation">
             <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true" t-on-click="logout">LOGOUT</button>
           </li>
-          <t-else = "" >
+          </t>
+          <t t-else = "" >
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true" t-on-click="onClickHome">Home</button>
+          </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"  t-on-click="onClickSignUp">Sign Up</button>
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false" t-on-click="onClickSignin">Sign In</button>
           </li>
+          </t>
         </ul>
     </nav>
      <div class="py-5 text-center">

@@ -10,9 +10,10 @@ export class signup extends Component {
           pwd: "",
           repwd: "",
           pwmatch: undefined,
-          html: "<h1>Helllo</h1>"
+          invalid_eml:"",
       });
    }
+
 
 _onSubmitForm(ev)
    {
@@ -21,12 +22,19 @@ _onSubmitForm(ev)
       const formData = new FormData(ev.currentTarget);
       xhr.send(JSON.stringify(Object.fromEntries(formData.entries())));
       xhr.onload = async () => {
-          if (xhr.status === 200) {
-              this.env.router.navigate({to: 'signin'});
-          }
-      };
-   }
+          const response = JSON.parse(xhr.response);
+            console.log(response)
+            if (response.credentials === false) {
+                this.state.invalid_eml = "Emailid already exist";
+            }
+            else{
+                alert("registeration Successfullly")
+                this.env.router.navigate({to:'login'});
+            }
+        };
+    }
 
+    
 
 _checkPwd() 
    {
@@ -70,21 +78,6 @@ _onKeyUpPwd(ev)
           <div class="col-md-12">
             <form action="/signup" t-on-submit.prevent="_onSubmitForm">
               <br/>
-              <div class="form-group">
-                <label for="role">Role</label>
-                <span class="input-group-text bg-white px-4 border-md border-right-0">
-                  <i class="fa fa-black-tie text-muted"></i>
-                  <select class="form-control " name="role" id="role" required="true">
-                    <option value="">Choose Role...</option>
-                    <option>Admin</option>
-                    <option>Customer</option>
-                    <option>Farmer</option>
-                  </select>
-                  <div class="invalid-feedback">
-                    Please select a valid Role.
-                  </div>
-                </span>
-              </div>
               <div class="form-group">
                 <label for="InputMobileNumber">User Name</label>
                 <span class="input-group-text bg-white px-4 border-md border-right-0">

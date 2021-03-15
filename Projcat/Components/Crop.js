@@ -5,14 +5,16 @@ const { xml } = owl.tags;
 export class Crop extends Component {
 
   async _onSubmitForm (ev) {
-    debugger;
-    const xhr = new window.XMLHttpRequest();
-    xhr.open('POST', '/do_crop');
-    const formData = new FormData(ev.currentTarget);
-    xhr.send(JSON.stringify(Object.fromEntries(formData.entries())));
-    xhr.onload = async () => {
-      console.log(JSON.parse(xhr.response));
-        };
+              debugger;
+              const xhr = new window.XMLHttpRequest();
+              xhr.open('POST', '/do_crop');
+              const formData = new FormData(ev.currentTarget);
+              xhr.send(JSON.stringify(Object.fromEntries(formData.entries())));
+              xhr.onload = async () => {
+                console.log(JSON.parse(xhr.response));
+              }
+  };
+
   _onCropForm(ev){
             const xhr = new window.XMLHttpRequest();
             xhr.open('POST', '/do_crop');
@@ -23,7 +25,6 @@ export class Crop extends Component {
                     this.env.router.navigate({to: 'signin'});
                 }
             };
-        }
   }
   static template = xml`
   <div style="height:45em;">
@@ -82,6 +83,4 @@ export class Crop extends Component {
         </div>
       </div>
   </div>`;
-
-  
 }
