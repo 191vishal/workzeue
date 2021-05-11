@@ -19,15 +19,6 @@
             <field name="specialist">pc repairing</field>   
             <field name="experience">3 years</field>   
         </record>
-        <record id="engineer1" model="user">
-            <field name="email">nimesh@gmail.com</field>
-            <field name="name">Nimesh Paramar</field>
-            <field name="mobile_no">96385274</field>
-            <field name="password">12345</field>
-            <field name="address">gadhada</field>
-            <field name="specialist">software r3epairing</field>   
-            <field name="experience">5 years</field>
-        </record>
     </data>
 
 </odoo>
